@@ -1,0 +1,79 @@
+GOAL:
+Sulla base di quanto visto a lezione modellizzare la realta' di un'universita' definendo colonne con nome, tipo di dato e vincoli di integrita' per queste entita':
+- dipartimento
+- corso di laurea
+- corso
+- insegnante
+- appello
+- studento
+- esito
+Ogni dipartimento e' composto da corsi di laura, formati da corsi, gestiti da insegnanti, che prevedono appelli per studenti, che avranno un esito finale
+NOTE: come detto in classe, in caso di ambiguita', cercare di immaginare una possibile realta', e nel caso sia una scelta poco chiara, descriverla con poche parole
+
+
+
+-DIPARTIMENTO
+
+    sede: VARCHAR(128) ; NOT NULLABLE
+    orari: VARCHAR(128) ; NOT NULLABLE
+    contatti: VARCHAR(128) ; NOT NULLABLE
+    facoltà: VARCHAR(32) ; NOT NULLABLE
+
+-CORSO DI LAUREA
+
+    tipologia: VARCHAR(128); NOT NULLABLE
+    ammissioni: INT ; NOT NULLABLE
+    materie: TEXT ; NOT NULLABLE
+
+-CORSO
+
+    durata: VARCHAR(128); NOT NULLABLE
+    programma: TEXT; NOT NULLABLE
+    docente: VARCHAR(32); NOT NULLABLE
+    frequenza_minima: TINYINT; NOT NULLABLE
+    ore_totali: INT; NOT NULLABLE
+
+-INSEGNANTE
+
+    nome: VARCHAR(64) ; NOT NULLABLE
+    cognome: VARCHAR(64) ; NOT NULLABLE
+    indirizzo: TEXT; NOT NULLABLE
+    n_tel: VARCHAR(32) ; NOT NULLABLE
+    data_nascita: DATE ; NOT NULLABLE
+    luogo_nascita: VARCHAR(64) ; NOT NULLABLE
+    cf: VARCHAR(64) ; NOT NULLABLE ; UNIQUE
+    email: VARCHAR(64) ; NOT NULLABLE ; UNIQUE
+    materia: VARCHAR(32) ; NOT NULLABLE
+    ruolo: VARCHAR(32) ; NOT NULLABLE
+    assunzione: DATE ; NOT NULLABLE
+    salario: INT ; NOT NULLABLE
+    turni: VARCHAR(128) ; NOT NULLABLE
+
+-APPELLO
+
+    nome_studente: VARCHAR(64) ; NOT NULLABLE
+    cognome_studente: VARCHAR(64) ; NOT NULLABLE
+    telefono: VARCHAR(32) ; NULLABLE
+    genere: VARCHAR(16) ; NOT NULLABLE
+
+-STUDENTE
+
+    nome_studente: VARCHAR(64) ; NOT NULLABLE
+    cognome_studente: VARCHAR(64) ; NOT NULLABLE
+    telefono: VARCHAR(32) ; NULLABLE
+    genere: VARCHAR(16) ; NOT NULLABLE
+    data_nascita: DATE ; NOT NULLABLE
+    luogo_nascita: VARCHAR(64) ; NOT NULLABLE
+    cf: VARCHAR(64) ; NOT NULLABLE ; UNIQUE
+    tipo_documento: VARCHAR(16) ; NOT NULLABLE
+    numero_documento: VARCHAR(32) ; NOT NULLABLE ; UNIQUE
+    email: VARCHAR(128) ; NOT NULLABLE ; UNIQUE
+    media_voti: TINYINT; NOT NULLABLE
+    foto: VARCHAR ; NOT NULLABLE
+
+-ESITO
+
+    esami_sostenuti: TINYINT ; NOT NULLABLE
+    ore_presenza: TINYINT ; NOT NULLABLE
+    ore_assenza: TINYINT ; NOT NULLABLE
+    media_voti: TINYINT ; NOT NULLABLE
